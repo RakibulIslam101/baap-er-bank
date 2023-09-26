@@ -9,18 +9,27 @@ document.getElementById('btn-withdraw').addEventListener('click', function(){
     const withdrawTotalElement = document.getElementById('withdraw-total');
     const previousWithdrawTotalString = withdrawTotalElement.innerText;
     const previousWithdrawTotal = parseFloat(previousWithdrawTotalString);
-    // step-5: calculate total withdraw amount
-    const currentWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
-    // step-6: set total withdraw amount
-    withdrawTotalElement.innerText = currentWithdrawTotal;
+    
+   
     // step-7:get the previous balance total
     const balanceTotalElement = document.getElementById('balance-total');
     const previousBalanceTotalString = balanceTotalElement.innerText;
     const previousBalanceTotal = parseFloat(previousBalanceTotalString);
+     // : clear the input field
+     userWithdraw.value = '';
+     
+     if(newWithdrawAmount>previousBalanceTotal){
+        alert('Bap er bank a taka nei');
+        return;
+     }
+     // step-5: calculate total withdraw amount
+    const currentWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
+     // step-6: set total withdraw amount
+     withdrawTotalElement.innerText = currentWithdrawTotal;
+
     // calculate new balance total
     const newBalanceTotal = previousBalanceTotal - newWithdrawAmount;
     // set the new balance total
     balanceTotalElement.innerText = newBalanceTotal;
-    // step-8: clear the input field
-    userWithdraw.value = '';
+   
 })
