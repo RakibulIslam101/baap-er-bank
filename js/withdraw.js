@@ -5,6 +5,13 @@ document.getElementById('btn-withdraw').addEventListener('click', function(){
     // step-3: also make sure to convert the input into a number by using parseFloat
     const newWithDrawAmountString = userWithdraw.value;
     const newWithdrawAmount = parseFloat(newWithDrawAmountString);
+     // : clear the input field
+     userWithdraw.value = '';
+    if (isNaN(newWithdrawAmount)){
+        alert('please provide a valid number');
+        return;
+    }
+
     // step-4: get previous withdraw total
     const withdrawTotalElement = document.getElementById('withdraw-total');
     const previousWithdrawTotalString = withdrawTotalElement.innerText;
@@ -15,8 +22,7 @@ document.getElementById('btn-withdraw').addEventListener('click', function(){
     const balanceTotalElement = document.getElementById('balance-total');
     const previousBalanceTotalString = balanceTotalElement.innerText;
     const previousBalanceTotal = parseFloat(previousBalanceTotalString);
-     // : clear the input field
-     userWithdraw.value = '';
+    
      
      if(newWithdrawAmount>previousBalanceTotal){
         alert('Bap er bank a taka nei');
